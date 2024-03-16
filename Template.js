@@ -4,7 +4,8 @@ const formElementSchema = new mongoose.Schema({
   elementOrder: Number,
   element: {
     type: String,
-    enum: ['title', 'question'],
+    // enum: ['title', 'question'],
+    order: Number,
   },
   indexName: String,
   title: {
