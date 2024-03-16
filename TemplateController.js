@@ -8,7 +8,9 @@ class TemplateController {
 
   async create(req, res) {
     try {
-      const { userId, formsName, startTime, elements } = req.body
+      const { data } = req.body
+      const jsonData = JSON.parse(data)
+      const { userId, formsName, startTime, elements } = jsonData
       const form = await Template.create({ userId, formsName, startTime, elements })
 
       console.log(req.body)
