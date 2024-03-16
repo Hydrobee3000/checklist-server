@@ -9,10 +9,10 @@ class TemplateController {
   async create(req, res) {
     try {
       const { userId, formsName, startTime, elements } = req.body
-      const form = await Template.create({ userId, formsName, startTime, elements })
+      const template = await Template.create({ userId, formsName, startTime, elements })
 
       console.log(req.body)
-      res.json(form)
+      res.json(template)
     } catch (error) {
       res.status(500).json(error)
     }
@@ -22,9 +22,9 @@ class TemplateController {
 
   async getAll(req, res) {
     try {
-      const forms = await Form.find() // get all records
+      const templates = await Template.find() // get all records
 
-      return res.json(forms)
+      return res.json(templates)
     } catch (error) {
       res.status(500).json(error)
     }

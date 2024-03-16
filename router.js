@@ -5,6 +5,7 @@ import TemplateController from './TemplateController.js'
 const router = Router()
 
 router.post('/template', TemplateController.create) // create
+router.post('/templates', TemplateController.getAll) // create
 router.post('/form', FormController.create) // create
 router.get('/forms', FormController.getAll) // read all
 router.get('/forms/:id', FormController.get) // read one
