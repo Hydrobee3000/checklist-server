@@ -1,4 +1,5 @@
 import express from 'express'
+import cors from 'cors'
 import mongoose from 'mongoose'
 import router from './router.js'
 
@@ -7,6 +8,7 @@ const DB_URL = `mongodb+srv://user:user@cluster0.edfrxne.mongodb.net/?retryWrite
 
 const app = express()
 
+app.use(cors())
 app.use(express.json()) // to convert json format
 app.use('/api', router) // register route
 
