@@ -3,9 +3,12 @@ import mongoose from 'mongoose'
 const formElementSchema = new mongoose.Schema({
   elementOrder: Number,
   element: {
-    type: String,
-    // enum: ['title', 'question'],
-    order: Number,
+    type: {
+      type: String,
+    },
+    order: {
+      type: Number,
+    },
   },
   indexName: String,
   title: {
