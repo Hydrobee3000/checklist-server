@@ -7,12 +7,10 @@ class FormController {
 
   async create(req, res) {
     try {
-      const { formsName, startTime, device, date, answers } = req.body
+      const { answers, date, device, formsName, startTime } = req.body
 
-      const answersArray = Object.entries(answers).map(([questionId, answer]) => ({ questionId, answer }))
-
-      // Создание новой формы с массивом ответов
-      const form = await Form.create({ formsName, startTime, device, date, answers: answersArray })
+      // Создание новой формы
+      const form = await Form.create({ answers, date, device, formsName, startTime })
 
       // Отправка ответа с созданной формой
       res.json(form)
