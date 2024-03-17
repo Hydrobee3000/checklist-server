@@ -5,26 +5,17 @@ import Form from './Form.js'
 class FormController {
   /* add form */
 
-  // async create(req, res) {
-  //   try {
-  //     const { formsName, startTime, elements } = req.body // get params from body request
-  //     console.log(req.body)
-  //     const form = await Form.create({ formsName, startTime, elements }) // create new record in db
-
-  //     res.json(req.body)
-  //   } catch (error) {
-  //     res.status(500).json(error)
-  //   }
-  // }
-
   async create(req, res) {
     try {
-      const { userId, formsName, startTime, elements } = req.body
-      const form = await Form.create({ userId, formsName, startTime, elements })
+      const { answers, date, device, formsName, startTime } = req.body
 
-      console.log(req.body)
+      // Создание новой формы
+      const form = await Form.create({ answers, date, device, formsName, startTime })
+
+      // Отправка ответа с созданной формой
       res.json(form)
     } catch (error) {
+      // Отправка ошибки с кодом 500 в случае возникновения ошибки
       res.status(500).json(error)
     }
   }

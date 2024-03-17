@@ -1,33 +1,19 @@
 import mongoose from 'mongoose'
 
-const formElementSchema = new mongoose.Schema({
-  elementOrder: Number,
-  element: {
-    type: String,
-    enum: ['title', 'question'],
-  },
-  indexName: String,
-  title: {
-    text: String,
-    remark: String,
-  },
-  order: Number,
-  isRequire: Boolean,
-  type: String,
-  component: String,
-  isMultipleAnswers: Boolean,
-  variants: [
-    {
-      value: String,
-      additionalInput: Boolean,
-    },
-  ],
+// Определение схемы для ответов на вопросы
+const answerSchema = new mongoose.Schema({
+  questionId: String, // Поле для хранения идентификатора вопроса
+  answer: String, // Поле для хранения ответа на вопрос
 })
 
+// Определение схемы для формы
 const formSchema = new mongoose.Schema({
-  formsName: String,
-  startTime: Date,
-  elements: [formElementSchema],
+  answers: [answerSchema], // Массив ответов на вопросы
+  date: String, // Дата заполнения формы
+  device: String, // Информация о устройстве
+  formsName: String, // Название формы
+  startTime: String, // Время начала заполнения формы
 })
 
+// Создание модели Form на основе схемы formSchema
 export default mongoose.model('Form', formSchema)
