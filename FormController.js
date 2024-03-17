@@ -10,13 +10,15 @@ class FormController {
       const { answers, date, device, formsName, startTime } = req.body
 
       // Преобразование данных в нужный формат
-      const formattedAnswers = answers.map((answer) => ({ answer }))
+      const formattedAnswers = answers.map((answer) => ({ ...answer }))
 
       // Создание новой формы
       const form = await Form.create({ answers: formattedAnswers, date, device, formsName, startTime })
 
+      // Отправка ответа с созданной формой
       res.json(form)
     } catch (error) {
+      // Отправка ошибки с кодом 500 в случае возникновения ошибки
       res.status(500).json(error)
     }
   }
